@@ -1,16 +1,30 @@
-# bim493_hw4
+# BIM493 - Mobile Programming I - Assignment #4
 
-A new Flutter project.
+This repository contains the fourth assignment for the BIM493 Mobile Programming I course at Eskişehir Technical University, Department of Computer Engineering.
 
-## Getting Started
+## Project Description
 
-This project is a starting point for a Flutter application.
+A store inventory management application developed with Flutter and Sqflite, featuring:
+* **Product Management:** Users can view product name, price, and stock information in a clean grid layout (DataTable/Card).
+* **Local Database:** Uses **sqflite** to store data locally, ensuring persistence even after the app is closed.
+* **Barcode Query:** Products can be quickly searched using their barcode numbers.
+* **CRUD Operations:** Implements full Create, Read, Update, and Delete functionality for managing store inventory.
+* **Input Validation:** Validates form inputs and provides user-friendly error messages (e.g., checks for empty fields or duplicate barcodes).
+* **Smart Dialogs:** Detects non-existent barcodes during search and prompts the user to add them immediately.
 
-A few resources to get you started if this is your first Flutter project:
+## Group Members
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* **Name:** `Çağdaş Kaplan`
+  **Student ID:** `41615046366`
+* **Name:** `Özgün Saz`
+  **Student ID:** `12125201262`
+* **Name:** `Ali Görkem Sali`
+  **Student ID:** `12245973452`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## How to Run
+
+1.  Ensure you have the Flutter SDK installed.
+2.  Clone this repository or extract the project zip file.
+3.  Navigate to the project directory.
+4.  Run `flutter pub get` to install the required dependencies (`sqflite`, `path`).
+5.  Run `flutter run` on a connected device or emulator.
