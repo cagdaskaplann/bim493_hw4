@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'product_model.dart';
 import 'database_helper.dart';
 
@@ -151,25 +152,58 @@ class _MainScreenState extends State<MainScreen> {
                 TextFormField(
                   controller: unitPriceController,
                   decoration: const InputDecoration(labelText: 'Unit Price'),
-                  keyboardType: TextInputType.number,
-                  validator: (val) => val!.isEmpty ? 'Required' : null,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+                  ],
+                  validator: (val) {
+                    if (val == null || val.isEmpty) return 'Required';
+                    if (double.tryParse(val) == null) return 'Invalid Number';
+                    return null;
+                  },
                 ),
+
                 TextFormField(
                   controller: taxRateController,
-                  decoration: const InputDecoration(labelText: 'Tax Rate'),
+                  decoration: const InputDecoration(labelText: 'Tax Rate (%)'),
                   keyboardType: TextInputType.number,
-                  validator: (val) => val!.isEmpty ? 'Required' : null,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  validator: (val) {
+                    if (val == null || val.isEmpty) return 'Required';
+                    if (int.tryParse(val) == null) return 'Invalid Number';
+                    return null;
+                  },
                 ),
+
                 TextFormField(
                   controller: priceController,
                   decoration: const InputDecoration(labelText: 'Price'),
-                  keyboardType: TextInputType.number,
-                  validator: (val) => val!.isEmpty ? 'Required' : null,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  inputFormatters: [
+                    FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+                  ],
+                  validator: (val) {
+                    if (val == null || val.isEmpty) return 'Required';
+                    if (double.tryParse(val) == null) return 'Invalid Number';
+                    return null;
+                  },
                 ),
+
                 TextFormField(
                   controller: stockController,
                   decoration: const InputDecoration(labelText: 'Stock Info (Optional)'),
                   keyboardType: TextInputType.number,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  validator: (val) {
+                    if (val != null && val.isNotEmpty && int.tryParse(val) == null) {
+                      return 'Invalid Number';
+                    }
+                    return null;
+                  },
                 ),
               ],
             ),
