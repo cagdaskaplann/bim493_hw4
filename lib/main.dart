@@ -37,37 +37,6 @@ class _MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     _refreshProductList();
-
-    void _confirmDelete(String barcode) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: const Text("Delete Item"),
-          content: Text("Barcode No: Are you sure you want to delete item ($barcode)?"),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(ctx).pop(),
-              child: const Text("Cancel"),
-            ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              onPressed: () async {
-                Navigator.of(ctx).pop();
-
-                await DatabaseHelper.instance.delete(barcode);
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Item deleted successfully.")),
-                );
-
-                _refreshProductList();
-              },
-              child: const Text("Sil", style: TextStyle(color: Colors.white)),
-            ),
-          ],
-        ),
-      );
-    }
   }
 
   Future<void> _refreshProductList() async {
